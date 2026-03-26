@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity Coach - AI-Powered Digital Wellness</title>
+    <meta name="description" content="Productivity Coach helps you build healthier digital habits with AI-powered coaching, screen time tracking, and behavioral science.">
+    <style>
+        :root {
+            --primary: #146E54;
+            --primary-dark: #0A3726;
+            --primary-light: #1A8F6E;
+            --mint: #78E6C3;
+            --bg: #FAFDF9;
+            --text: #1A2E28;
+            --text-light: #5A7A70;
+            --white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+        }
+
+        /* Nav */
+        nav {
+            background: var(--white);
+            border-bottom: 1px solid #e8f0ec;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.95rem;
+        }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--mint);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: var(--mint);
+            color: var(--primary-dark);
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        /* Features */
+        .features {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+        .features h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--primary-dark);
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .feature-card {
+            background: var(--white);
+            border: 1px solid #e8f0ec;
+            border-radius: 16px;
+            padding: 2rem;
+            transition: box-shadow 0.2s;
+        }
+        .feature-card:hover {
+            box-shadow: 0 4px 20px rgba(20,110,84,0.08);
+        }
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        .feature-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Pricing */
+        .pricing {
+            background: var(--white);
+            padding: 5rem 2rem;
+        }
+        .pricing h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        .pricing-sub {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+        }
+        .pricing-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .price-card {
+            border: 2px solid #e8f0ec;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        .price-card.popular {
+            border-color: var(--primary);
+            box-shadow: 0 4px 20px rgba(20,110,84,0.12);
+        }
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .price-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 1rem 0 0.25rem;
+        }
+        .price-period { color: var(--text-light); font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .price-card ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+        .price-card li {
+            padding: 0.4rem 0;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        .price-card li::before {
+            content: "â ";
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: rgba(255,255,255,0.7);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        .footer-links {
+            margin-bottom: 1.5rem;
+        }
+        .footer-links a {
+            color: var(--mint);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 0.95rem;
+        }
+        .footer-links a:hover { text-decoration: underline; }
+        footer p { font-size: 0.85rem; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .nav-links a { margin-left: 1rem; font-size: 0.85rem; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="/" class="logo">Productivity Coach</a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="/privacy.html">Privacy</a>
+                <a href="/delete.html">Data Deletion</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Your AI Productivity Coach</h1>
+        <p>Build healthier digital habits with personalized coaching grounded in behavioral science. Track screen time, set goals, and transform your relationship with your phone.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.productivitycoach.app" class="cta-btn">Get it on Google Play</a>
+    </section>
+
+    <section class="features" id="features">
+        <h2>Everything You Need to Take Control</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">ð§ </div>
+                <h3>AI Coaching Chat</h3>
+                <p>Two-way conversations with an AI coach trained on Tiny Habits, CBT, Motivational Interviewing, and more. Get advice tailored to your actual usage patterns.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">ð</div>
+                <h3>Screen Time Insights</h3>
+                <p>See exactly where your time goes. Detailed breakdowns by app and category, with daily and weekly trends to help you make informed choices.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">ð¯</div>
+                <h3>Smart Goals</h3>
+                <p>Set custom productivity goals with daily targets. Visual progress tracking and AI-powered encouragement keep you on course.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">âï¸</div>
+                <h3>Daily Briefings</h3>
+                <p>Start every morning with a personalized plan, motivational nudges, and practical tips based on your habits and goals.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">â±ï¸</div>
+                <h3>Focus Sessions</h3>
+                <p>Pomodoro-style focus timers with streak tracking. Build consistency and celebrate your focused minutes every day.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">ð</div>
+                <h3>Micro-Challenges</h3>
+                <p>Personalized daily challenges that stretch your habits just enough. From phone-free mornings to app time limits.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <h2>Simple, Fair Pricing</h2>
+        <p class="pricing-sub">Free to track. Premium to transform.</p>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Monthly</h3>
+                <div class="price-amount">$3.99</div>
+                <div class="price-period">per month</div>
+                <ul>
+                    <li>AI coaching chat</li>
+                    <li>Micro-challenges</li>
+                    <li>Smart insights</li>
+                    <li>Daily briefings</li>
+                </ul>
+            </div>
+            <div class="price-card popular">
+                <div class="popular-badge">Best Value</div>
+                <h3>Annual</h3>
+                <div class="price-amount">$29.99</div>
+                <div class="price-period">per year (save 37%)</div>
+                <ul>
+                    <li>Everything in Monthly</li>
+                    <li>Priority AI responses</li>
+                    <li>Advanced pattern analysis</li>
+                    <li>Cancel anytime</li>
+                </ul>
+            </div>
+            <div class="price-card">
+                <h3>Lifetime</h3>
+                <div class="price-amount">$49.99</div>
+                <div class="price-period">one-time payment</div>
+                <ul>
+                    <li>Everything forever</li>
+                    <li>All future features</li>
+                    <li>Early adopter perks</li>
+                    <li>No recurring charges</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/privacy.html">Privacy Policy</a>
+            <a href="/delete.html">Request Data Deletion</a>
+            <a href="mailto:hello@prod-coach.com">Contact</a>
+        </div>
+        <p>&copy; 2026 Productivity Coach. All rights reserved.</p>
+    </footer>
+</body>
+</html>
